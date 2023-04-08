@@ -15,7 +15,7 @@
 ** DESCRIPTION:	The isdigit()  function tests for a decimal digit character.
 */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 int	ft_isdigit(int c)
 {

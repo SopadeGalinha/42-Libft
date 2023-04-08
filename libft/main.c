@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhogonca <jhogonca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/06 20:06:54 by jhogonca          #+#    #+#             */
-/*   Updated: 2023/04/06 20:06:54 by jhogonca         ###   ########.fr       */
+/*   Created: 2023/04/08 11:44:04 by jhogonca          #+#    #+#             */
+/*   Updated: 2023/04/08 11:44:04 by jhogonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* LIBRARY: <ctype.h>
-** SYNOPSIS: test for ASCII character
-** DESCRIPTION: The isascii() function tests for an ASCII character,
-** which is any character between 0 and 127.
-*/
+#include "includes/libft.h"
 
-#include "../includes/libft.h"
-
-int	ft_isascii(int c)
+int main(int ac, char **av)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
+	if (ac < 2)
+		return (printf("Missing params\n"));
 	return (0);
 }

@@ -10,24 +10,43 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/* DESCRIPTION: Applies the function f to each character of the string
-** passed as argument, and passing its index as first argument. Each
-** character is passed by address to f to be modified if necessary
-** Param. #1: The string to iterate.
-** Param. #2: The function to apply to each character of s and its index.
-**  Return value: None.
+/* Allocates (with malloc(3)) and returns a copy of ’s1’
+** with the characters specified in ’set’ removed from the beginning
+** and the end of the string.
 */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+static int	ft_isset(char c, char const *set)
 {
 	int	i;
 
-	if (!s || !f)
-		return ;
-	i = -1;
-	while (s[++i])
-		f(i, &s[i]);
-	return ;
+	i = 0;
+	while (set[i])
+		if (c == set[i++])
+			return (1);
+	return (0);
+}
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	size_t	len;
+	char	*str;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	if (!s1)
+		return (NULL);
+	len = ft_strlen(s1);
+	while (ft_isset(s1[i], set))
+		i++;
+	if (i == len)
+		return (ft_strdup(""));
+	j = ft_strlen(s1);
+	while (ft_isset(s1[--j], set))
+		;
+	j = (j + 1) - i;
+	str = ft_substr(s1, i, j);
+	return (str);
 }

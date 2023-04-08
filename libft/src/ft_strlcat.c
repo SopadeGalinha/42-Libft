@@ -20,7 +20,7 @@
 **	If the src and dst strings overlap, the behavior is undefined.
 */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
@@ -29,10 +29,10 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 
 	if (dstsize <= ft_strlen(dst))
 		return (dstsize + ft_strlen(src));
-	c = ft_strlen(dst) - 1;
-	d = -1;
-	while (src[++d] != '\0' && ++c + 1 < dstsize)
-		dst[c] = src[d];
+	c = ft_strlen(dst);
+	d = 0;
+	while (src[d] != '\0' && (c + 1) < dstsize)
+		dst[c++] = src[d++];
 	dst[c] = '\0';
 	return (ft_strlen(dst) + ft_strlen(&src[d]));
 }

@@ -15,7 +15,7 @@
 ** DESCRIPTION: The strlen() function computes the length of the string s.
 */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -23,6 +23,6 @@ size_t	ft_strlen(const char *s)
 
 	i = -1;
 	while (s[++i])
-        ;
+		;
 	return (i);
 }

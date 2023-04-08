@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 /* LIBRARY: <string.h>
 ** DESCRIPTION:	 The memcmp() function compares byte string s1 
 ** against byte string s2. Both strings are assumed to be n bytes long.
@@ -18,7 +17,7 @@
 ** if the first n bytes  of  s1  is  found, respectively,
 ** to be less than, to match, or be greater than the first n bytes of s2.*/
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {

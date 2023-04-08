@@ -10,19 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 /* LIBRARY: <ctype.h>  
 ** DESCRIPTION: Convert lowercase to uppercase
 ** RETURN VALUE:  The value returned is that of the converted letter, 
 ** or c if the conversion was not possible.  
 */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 int	ft_toupper(int c)
 {
-	if (c >= 'a' && c <= 'a')
+	if (c >= 'a' && c <= 'z')
 		return (c - 32);
 	return (c);
 }

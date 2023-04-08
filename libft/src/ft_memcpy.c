@@ -16,7 +16,7 @@
 **  not overlap.  Use memmove(3) if the memory areas do overlap.
 */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {

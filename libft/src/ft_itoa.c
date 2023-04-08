@@ -17,7 +17,7 @@
 **  the function returns NULL.
 */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 static void		ft_fill_res(int size, int offset, int n, char *res);
 static long int	get_size(long int n);

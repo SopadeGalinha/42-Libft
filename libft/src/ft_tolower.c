@@ -16,7 +16,7 @@
 ** or c if the conversion was not possible.  
 */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 int	ft_tolower(int c)
 {

@@ -17,7 +17,7 @@ Param. #1: The string to iterate.
 Param. #2: The function to apply to each character of s and its index.
 Return value: None */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {

@@ -17,7 +17,7 @@
 ** RETURN VALUE: The converted value or 0 on error.
 */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 int	ft_atoi(const char *str)
 {

@@ -10,13 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 /* LIBRARY: <string.h>
 ** SYNOPSIS: find a substring within a string
-** DESCRIPTION: searches for the first occurrence of a null-terminated string needle 
-** within another null-terminated string haystack, but only up to the first
-** len characters of haystack.
+** DESCRIPTION: searches for the first occurrence of a
+** null-terminated string needle within another null-terminated
+** string haystack, but only up to the first len characters of haystack.
 ** If needle is an empty string, haystack is returned;
 ** if needle does not occur in haystack, NULL is returned;
 ** otherwise, a pointer to the first character of the first occurrence
@@ -25,23 +23,25 @@
 ** If either haystack or needle is NULL, the function returns NULL.
 */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	h;
 	size_t	n;
 
-	if (!haystack || !needle)
-		return (NULL);
-	h = -1;
-	while (haystack[++h] && h < len)
+	h = 0;
+	n = 0;
+	if (!(haystack[h] || needle[n]))
+		return ((char *)haystack);
+	while (haystack[h])
 	{
-		n = 0;
-		while (haystack[h + n] == needle[n] && (h + n) < len && needle[n])
+		while (haystack[h + n] == needle[n] && len > (h + n))
 			n++;
-		if (!needle[n])
+		if (!(needle[n]))
 			return ((char *)haystack + h);
+		n = 0;
+		h++;
 	}
-	return (NULL);
+	return (0);
 }

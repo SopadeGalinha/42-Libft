@@ -17,11 +17,10 @@
 **  Param. #2 The link to add at the beginning of the list.
 */
 
-#include"libft.h"
+#include "../../includes/libft.h"
 
 t_list	ft_lstadd_front(t_list **head, t_list *new)
 {
-    
 	new->next = *head;
 	*head = new;
 	return (*new);

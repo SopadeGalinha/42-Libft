@@ -17,6 +17,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 /*_______________________________FUNCTIONS__________________________________*/
 
@@ -69,6 +70,8 @@ char	*ft_strdup(const char *src);
 char	**ft_split(char const *s, char delim);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(char const *s1, char const *set);
 
 // --------------------------------- VOID -------------------------------- //
 
@@ -80,7 +83,6 @@ void	ft_putendl_fd(char *s, int fd);
 
 /*_________________________________________________________________________*/
 
-
 //BONUS
 
 typedef struct s_list
@@ -88,6 +90,8 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+// --------------------------------- VOID -------------------------------- //
 
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);

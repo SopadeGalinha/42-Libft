@@ -16,7 +16,7 @@
 **	the copy is always done in a non-destructive manner.
 **	The difference between memmove and memcpy it's that memmove uses a buffer*/
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 static void	*ft_revmemcpy(void *dest, const void *src, size_t n)
 {

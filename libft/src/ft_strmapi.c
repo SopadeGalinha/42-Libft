@@ -25,7 +25,7 @@ string ’s’, and passing its index as first argument
 to create a new string (with malloc(3)) resulting
 from successive applications of ’f’.*/
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
@@ -41,7 +41,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	result = malloc(len + 1);
 	if (!result)
 		return (NULL);
-	i = -1;	
+	i = -1;
 	while (++i < len)
 		result[i] = f(i, s[i]);
 	result[len] = '\0';

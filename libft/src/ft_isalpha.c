@@ -16,7 +16,7 @@
     character for which isupper(3) or islower(3) is true.
 */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 int	ft_isalpha(int c)
 {

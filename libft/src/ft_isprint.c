@@ -16,7 +16,7 @@
 **  any printing character, including space (` ').
 */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 int	ft_isprint(int c)
 {

@@ -17,7 +17,7 @@
 ** The terminating null character is considered to be part of the string;
 ** therefore if c is `\0', the functions locate the terminating `\0'. */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {

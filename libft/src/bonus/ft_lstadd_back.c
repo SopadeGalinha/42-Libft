@@ -14,7 +14,7 @@
 **  Adds the ’new’ node at the end of the list.
 */
 
-#include "libft.h"
+#include "../../includes/libft.h"
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {

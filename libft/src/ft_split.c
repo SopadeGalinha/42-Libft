@@ -1,79 +1,71 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jhogonca <jhogonca@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/07 16:58:27 by jhogonca          #+#    #+#             */
-/*   Updated: 2023/04/07 16:58:27 by jhogonca         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "../includes/libft.h"
 
-/*
-**  Allocates (with malloc(3)) and returns an array of “fresh”
-**  strings (all ending with ’\0’, including the array itself)
-**  obtained by spliting s using the character c as a delimiter.
-**  If the allocation fails the function returns NULL. Example:
-**  ft_strsplit("*hello*fellow***students*", ’*’) returns the 
-**  array ["hello", "fellow", "students"].
-** Param. #1 The string to split.
-** Param. #2 The delimiter character.
-** Return value The array of “fresh” strings result of the split.
-** ft_strsplit("*hello*fellow***students*", ’*’)
-** returns the array ["hello", "fellow", "students"].
-*/
-
-#include "libft.h"
-
-static int	wordcount(char const *str, char delim);
-
-char	**ft_split(char const *s, char delim)
+static int	count_words(char const *s, char c)
 {
-	char	**newarray;
-	int		i;
-	int		j;
-	int		start;
+	int	c_words;
+	int	trigger;
 
-	if (!s || !delim)
-		return (NULL);
-	newarray = malloc(sizeof(char *) * (wordcount(s, delim) + 1));
-	if (newarray == NULL)
-		return (NULL);
-	i = 0;
-	j = -1;
-	start = -1;
-	while (++j <= ft_strlen(s))
+	c_words = 0;
+	trigger = 0;
+	while (*s)
 	{
-		if (s[j] != delim && start < 0)
-			start = j;
-		else if ((s[j] == delim || j == ft_strlen(s)) && start >= 0)
+		if (*s != c && trigger == 0)
 		{
-			newarray[i++] = ft_substr(s, start, j - start);
-			start = -1;
+			c_words++;
+			trigger = 1;
 		}
+		else if (*s == c)
+			trigger = 0;
+		s++;
 	}
-	newarray[i] = NULL;
-	return (newarray);
+	return (c_words);
 }
 
-static int	wordcount(char const *str, char delim)
+static char	*split_word(const char *str, int start, int finish)
 {
-	int	trigger;
-	int	count;
+	char	*word;
+	int		i;
 
-	trigger = 0;
-	count = 0;
-	while (*str)
+	i = 0;
+	word = malloc((finish - start + 1) * sizeof(char));
+	while (start < finish)
+		word[i++] = str[start++];
+	word[i] = '\0';
+	return (word);
+}
+
+static char	**splitting(char **split, char const *s, char c)
+{
+	size_t	i;
+	size_t	j;
+	int		start;
+
+	i = 0;
+	j = 0;
+	start = -1;
+	while (i <= ft_strlen(s))
 	{
-		if (*str != delim && trigger == 0)
+		if (s[i] != c && start < 0)
+			start = i;
+		else if ((s[i] == c || i == ft_strlen(s)) && start >= 0)
 		{
-			count++;
-			trigger = 1;
-		}	
-		else if (*str == delim && trigger == 1)
-			trigger = 0;
-		str++;
+			split[j++] = split_word(s, start, i);
+			start = -1;
+		}
+		i++;
 	}
-	return (count);
+	split[j] = 0;
+	return (split);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**split;
+
+	if (!s)
+		return (0);
+	split = malloc((count_words(s, c) + 1) * sizeof(char *));
+	if (!split)
+		return (0);
+	return (splitting(split, s, c));
 }

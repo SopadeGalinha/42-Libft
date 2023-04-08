@@ -16,7 +16,7 @@
 ** (converted to a char) in the string s.
 ** If c is `\0', strrchr() locates the terminating `\0'.*/
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {

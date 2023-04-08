@@ -17,12 +17,12 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 /*_______________________________FUNCTIONS__________________________________*/
 
-//MANDATORY
+//MANDATORY PART I
 
-// PART I
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
@@ -53,7 +53,7 @@ void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void*src, size_t n);
 
-// ----------------------------- PART I SIZE T ---------------------------- //
+// ----------------------------- PART I SIZE_T ---------------------------- //
 
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
@@ -61,23 +61,26 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 
 /*_________________________________________________________________________*/
 
-// PART II
+//MANDATORY PART II
+
+// ------------------------------ CHAR ------------------------------------ //
 
 char	*ft_itoa(int n);
 char	*ft_strdup(const char *src);
 char	**ft_split(char const *s, char delim);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char	*ft_strtrim(char const *s1, char const *set);
+
+// --------------------------------- VOID -------------------------------- //
+
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr_fd(int nb, int fd);
 void	ft_putendl_fd(char *s, int fd);
 
-
-
-
-
+/*_________________________________________________________________________*/
 
 //BONUS
 
@@ -85,32 +88,21 @@ typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-}				t_list;
+}	t_list;
+
+// --------------------------------- VOID -------------------------------- //
 
 int		ft_lstsize(t_list *lst);
-
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstnew(void *content);
 t_list	ft_lstadd_front(t_list **head, t_list *new);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstiter(t_list *lst, void (*f)(void *));
-void	ft_lstclear(t_list **lst, void (*del)(void *));
-void	ft_lstdelone(t_list *lst, void (*del)(void *));
+// --------------------------------- VOID -------------------------------- //
 
-//EXTRAS
-/*
-int	    ft_islower(int c);
-int		ft_isblank(int c);
-int     ft_iscntrl(int c);
-int	    ft_isgraph(int c);
-int     ft_ispunct(int c);
-int     ft_isspace(int c);
-int     ft_isupper(int c);
-int     ft_isxdigit(int c);
-char	*ft_strrev(char *str);
-void	ft_swap_int(int *a, int *b);
-void	ft_swap_char(char *a, char *b);
-*/
+void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstdelone(t_list *lst, void (*del)(void *));
+void	ft_lstclear(t_list **lst, void (*del)(void *));
+void	ft_lstiter(t_list *lst, void (*f)(void *));
+
 #endif

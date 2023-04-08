@@ -16,7 +16,7 @@
 ** character for which isalpha or isdigit is true.
 */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 int	ft_isalnum(int c)
 {
