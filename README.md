@@ -11,6 +11,7 @@ To get started with **libft**, you can simply download or clone the repository t
 `git clone https://github.com/SopadeGalinha/42-Libft.git`
 
 The repository contains the library's source code, along with a Makefile that can be used to compile the library.
+
 To build the library, simply run the following command in the repository's root directory:
 
 Mandatory : `make`
