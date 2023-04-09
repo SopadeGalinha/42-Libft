@@ -47,8 +47,8 @@ ft_memalloc, ft_memdel, ft_memccpy.
 
 ### Bonus: Linked list manipulation:
 
-ft_lstnew, ft_lstadd,
-ft_lstdel, ft_lstmap,
-ft_lstiter, ft_lstdelone.
+ft_lstadd_back.c, ft_lstclear.c, ft_lstnew.c,
+ft_lstdelone.c, ft_lstiter.c, ft_lstlast.c,
+ft_lstmap.c, ft_lstsize.c, ft_lstadd_front.c.
 
 Each function has it own description at the source of the code as a comment.
