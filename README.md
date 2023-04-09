@@ -2,7 +2,7 @@
 # <h1>42 Libft</h1>
 
 
-42-Libft is a static library written in C language that provides a set of pre-implemented functions for manipulating strings, characters, arrays, and other common programming operations. The library is designed to be included in C projects, especially those developed as part of the curriculum at 42 Network coding schools.
+Libft is a static library written in C language that provides a set of pre-implemented functions for manipulating strings, characters, arrays, and other common programming operations. The library is designed to be included in C projects, especially those developed as part of the curriculum at 42 Network coding schools.
 
 ## Getting Started
 
