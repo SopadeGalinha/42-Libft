@@ -1,5 +1,5 @@
 
-# <h1>42-Libft</h1>
+# <h1>42 Libft</h1>
 
 
 42-Libft is a static library written in C language that provides a set of pre-implemented functions for manipulating strings, characters, arrays, and other common programming operations. The library is designed to be included in C projects, especially those developed as part of the curriculum at 42 Network coding schools.
@@ -29,10 +29,26 @@ To compile your code you can do:
 
 The library provides a wide range of functions that cover various common programming operations, such as:
 
-String manipulation (ft_strlen, ft_strcpy, ft_strcat, etc.)
-Character manipulation (ft_isalpha, ft_isdigit, ft_toupper, etc.)
-Memory allocation (ft_memset, ft_memcpy, ft_memalloc, etc.)
+### String manipulation:
 
-Bonus: Linked list manipulation (e.g., ft_lstnew, ft_lstadd, ft_lstiter, etc.)
+ft_atoi.c, ft_itoa.c, ft_putchar_fd.c, ft_putendl_fd.c, ft_strjoin.c, ft_strdup.c
+ft_putnbr_fd.c, ft_putstr_fd.c, ft_split.c, ft_strchr.c, ft_strlcat.c, ft_striteri.c
+ft_strlcpy.c, ft_strlen.c, ft_strmapi.c, ft_strncmp.c, ft_tolower.c,
+ft_strrchr.c, ft_strtrim.c, ft_substr.c, ft_toupper.c, ft_strnstr.c.
+
+Character manipulation:
+ft_isalnum.c, ft_isalpha.c, ft_isascii.c, ft_isdigit.c, ft_isprint.c
+
+### Memory manipulation:
+
+ft_memset, ft_bzero, ft_memcpy,
+ft_memmove, ft_memchr, ft_memcmp,
+ft_memalloc, ft_memdel, ft_memccpy.
+
+### Bonus: Linked list manipulation:
+
+ft_lstnew, ft_lstadd,
+ft_lstdel, ft_lstmap,
+ft_lstiter, ft_lstdelone.
 
 Each function has it own description at the source of the code as a comment.
