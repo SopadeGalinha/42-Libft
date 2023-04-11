@@ -24,7 +24,7 @@ This will generate the **libft.a** file, which can be linked to your C project.
 
 To compile your code you can do: 
 
-`gcc yourcode.c libft.a`
+`gcc yourmaincode.c libft.a`
 
 ## Functions
 
