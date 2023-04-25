@@ -13,11 +13,16 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE   21
+# endif
+
 /*________________________________HEADERS__________________________________*/
 
+# include <stdio.h>
+# include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 
 /*_______________________________FUNCTIONS__________________________________*/
 
@@ -42,8 +47,8 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strdup(const char *src);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 
 // ----------------------------- PART I VOID ------------------------------ //
 
@@ -60,7 +65,7 @@ size_t	ft_strlen(const char *s);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 
-/*_________________________________________________________________________*/
+/*__________________________________________________________________________*/
 
 //MANDATORY PART II
 
@@ -69,29 +74,45 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char	*ft_itoa(int n);
 char	*ft_strdup(const char *src);
 char	**ft_split(char const *s, char delim);
+char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-char	*ft_strtrim(char const *s1, char const *set);
 
-// --------------------------------- VOID -------------------------------- //
+// ------------------------------- VOID ----------------------------------- //
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+void	ft_putnbr_fd(int nb, int fd);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
-void	ft_putnbr_fd(int nb, int fd);
 void	ft_putendl_fd(char *s, int fd);
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 
 /*_________________________________________________________________________*/
 
-//BONUS
+//EXTRAS
 
+char	*get_next_line(int fd);
+
+/*_________________________________________________________________________*/
+
+// STRUCTURES
+
+// --------------------------- LIBFT BONUS ------------------------------- //
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }	t_list;
 
-// --------------------------------- VOID -------------------------------- //
+// -------------------------------- GNL ---------------------------------- //
+typedef struct s_line
+{
+	char	*line;
+	long	size_line;
+	long	index;
+	long	size_buffer;
+}	t_line;
+
+// ------------------------------- VOID ---------------------------------- //
 
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
@@ -99,11 +120,13 @@ t_list	*ft_lstnew(void *content);
 t_list	ft_lstadd_front(t_list **head, t_list *new);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
-// --------------------------------- VOID -------------------------------- //
+// ------------------------------- VOID ---------------------------------- //
 
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstdelone(t_list *lst, void (*del)(void *));
-void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
+void	ft_lstclear(t_list **lst, void (*del)(void *));
+void	ft_lstdelone(t_list *lst, void (*del)(void *));
+void	ft_lstadd_back(t_list **lst, t_list *new);
+
+/*_________________________________________________________________________*/
 
 #endif
