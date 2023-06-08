@@ -26,7 +26,7 @@ SRCS =  ft_strtrim.c     ft_atoi.c         ft_isprint.c    ft_strlen.c\
 		ft_lstnew.c      ft_lstmap.c       ft_lstlast.c     ft_lstiter.c\
 		ft_lstsize.c     ft_lstclear.c     ft_lstdelone.c\
 		ft_lstadd_back.c ft_lstadd_front.c\
-		get_next_line.c
+		get_next_line.c	 ft_printf.c
 
 OBJS	:= ${SRCS:.c=.o}
 
@@ -38,26 +38,27 @@ CL := ar -rc
 RL := ar -s
 
 ${NAME}: ${OBJS}
+	printf '\033[32mlibft ready[ ✔ ] %s\n\033[0m'
 	${CL} ${NAME} ${OBJS}
 	${RL} ${NAME}
-	echo 'libft is ready'
 
 all: ${NAME}
 
 clean:
 	${RM} ${OBJS}
-	echo 'Objects removed'
+	printf '\033[31mlibft objects removed[ ✔ ]\n\033[0m'
 
 fclean: clean
 	${RM} ${NAME}
-	echo 'Static library removed'
+	printf '\033[31mlibft.a removed[ ✔ ]\n\033[0m'
 
 re: fclean all
 
 norm:
-	echo 'Running Norminette'
+	printf '\033[32mRunning norminette..\n\033[0m'
 	norminette -R CheckForbiddenSourceHeader *.c
 	norminette -R CheckDefine *.h
+	printf '\033[32mNorminette libft[ ✔ ]\n\033[0m'
 
 author: 
 	echo 'jhogonca'

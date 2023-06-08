@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static char	*get_line(char *line, char *buffer, long size_buffer, long *size_line)
+static char	*get_line(char *line, char *buffer, long size_buffer, long *sz_line)
 {
 	t_line	st;
 
@@ -20,11 +20,11 @@ static char	*get_line(char *line, char *buffer, long size_buffer, long *size_lin
 	st.index = -1;
 	st.size_buffer = -1;
 	st.line = line;
-	*size_line += size_buffer;
-	line = malloc(*size_line + 1 * sizeof(char));
+	*sz_line += size_buffer;
+	line = malloc(*sz_line + 1 * sizeof(char));
 	if (line)
 	{
-		line[*size_line] = 0;
+		line[*sz_line] = 0;
 		while (st.line && st.line[++st.size_line])
 			line[++st.index] = st.line[st.size_line];
 		st.size_line = -1;
@@ -66,7 +66,6 @@ char	*get_next_line(int fd)
 			st.size_buffer += buf[fd][st.size_buffer] == '\n';
 			st.line = get_line(st.line, buf[fd], st.size_buffer, &st.size_line);
 		}
-		return (st.line);                                                                                                                                                                                                                                                                               
 	}
 	return (st.line);
 }

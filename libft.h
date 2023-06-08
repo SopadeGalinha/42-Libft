@@ -23,6 +23,7 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdarg.h>
 
 /*_______________________________FUNCTIONS__________________________________*/
 
@@ -111,6 +112,16 @@ typedef struct s_line
 	long	index;
 	long	size_buffer;
 }	t_line;
+
+// -------------------------------- PRINTF ------------------------------- //
+typedef struct s_data
+{
+	int				count;
+	int				index;
+	long			pointer;
+	unsigned int	hex_ref;
+	char			*str;
+}	t_data;
 
 // ------------------------------- VOID ---------------------------------- //
 
