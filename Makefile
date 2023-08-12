@@ -25,7 +25,7 @@ SRCS =  ft_strtrim.c     ft_atoi.c         ft_isprint.c    ft_strlen.c\
 		ft_memchr.c      ft_memcmp.c       ft_memset.c\
 		ft_lstnew.c      ft_lstmap.c       ft_lstlast.c     ft_lstiter.c\
 		ft_lstsize.c     ft_lstclear.c     ft_lstdelone.c\
-		ft_lstadd_back.c ft_lstadd_front.c\
+		ft_lstadd_back.c ft_lstadd_front.c ft_atoi_base.c \
 		get_next_line.c	 ft_printf.c
 
 OBJS	:= ${SRCS:.c=.o}
