@@ -12,72 +12,72 @@
 
 #include "libft.h"
 
-static int	count_words(char const *s, char c)
+static int	ft_wordcount(const char *s, char c)
 {
-	int	c_words;
-	int	trigger;
+	int	total;
+	int	i;
 
-	c_words = 0;
-	trigger = 0;
-	while (*s)
+	total = 0;
+	i = 0;
+	while (s[i])
 	{
-		if (*s != c && trigger == 0)
-		{
-			c_words++;
-			trigger = 1;
-		}
-		else if (*s == c)
-			trigger = 0;
-		s++;
+		if ((i == 0 && s[i] != c) || (s[i] != c && s[i - 1] == c))
+			total++;
+		i++;
 	}
-	return (c_words);
+	return (total);
 }
 
-static char	*split_word(const char *str, int start, int finish)
+static int	get_word_length(const char *s, char c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] && s[i] != c)
+		i++;
+	return (i);
+}
+
+static char	*copy_word(const char *s, char c)
 {
 	char	*word;
 	int		i;
 
+	word = malloc(sizeof(char *) * (get_word_length(s, c) + 1));
+	if (!word)
+		return (NULL);
 	i = 0;
-	word = malloc((finish - start + 1) * sizeof(char));
-	while (start < finish)
-		word[i++] = str[start++];
+	while (s[i] && s[i] != c)
+	{
+		word[i] = s[i];
+		i++;
+	}
 	word[i] = '\0';
 	return (word);
 }
 
-static char	**splitting(char **split, char const *s, char c)
+char	**ft_split(const char *s, char c)
 {
-	size_t	i;
-	size_t	j;
-	int		start;
+	char	**result;
+	int		index;
+	int		i;
 
+	result = malloc(sizeof(char *) * (ft_wordcount(s, c) + 1));
+	if (!result)
+		return (NULL);
+	index = 0;
 	i = 0;
-	j = 0;
-	start = -1;
-	while (i <= ft_strlen(s))
+	while (s[i])
 	{
-		if (s[i] != c && start < 0)
-			start = i;
-		else if ((s[i] == c || i == ft_strlen(s)) && start >= 0)
+		if (s[i] == c)
+			i++;
+		else
 		{
-			split[j++] = split_word(s, start, i);
-			start = -1;
+			result[index] = copy_word(&s[i], c);
+			index++;
+			i += get_word_length(&s[i], c);
 		}
-		i++;
 	}
-	split[j] = 0;
-	return (split);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char	**split;
-
-	if (!s)
-		return (0);
-	split = malloc((count_words(s, c) + 1) * sizeof(char *));
-	if (!split)
-		return (0);
-	return (splitting(split, s, c));
+	result[index] = NULL;
+	return (result);
 }

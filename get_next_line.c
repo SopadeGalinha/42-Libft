@@ -12,9 +12,10 @@
 
 #include "libft.h"
 
+
 static char	*get_line(char *line, char *buffer, long size_buffer, long *sz_line)
 {
-	t_line	st;
+	t_gnl	st;
 
 	st.size_line = -1;
 	st.index = -1;
@@ -43,7 +44,7 @@ static char	*get_line(char *line, char *buffer, long size_buffer, long *sz_line)
 
 char	*get_next_line(int fd)
 {
-	t_line		st;
+	t_gnl		st;
 	static char	buf[FOPEN_MAX][BUFFER_SIZE + 1];
 
 	st.line = NULL;

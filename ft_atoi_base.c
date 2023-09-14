@@ -1,88 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
+/*   testes.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhogonca <jhogonca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/12 14:43:54 by jhogonca          #+#    #+#             */
-/*   Updated: 2023/08/12 14:43:54 by jhogonca         ###   ########.fr       */
+/*   Created: 2023/09/12 23:41:50 by jhogonca          #+#    #+#             */
+/*   Updated: 2023/09/12 23:41:50 by jhogonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static bool	is_hex(const char *str);
-static bool	ft_isspace(char c);
-static int	ft_atoi_base_aux(const char *str, int i, int base);
+static int	is_in_base(char c, const char *base);
+int			ft_atoi_base_aux(const char *nptr, const char *base, int sign);
 
-int	ft_atoi_base(const char *str, int base)
+// Convert a string to an integer according to the base passed as argument
+int	ft_atoi_base(const char *nptr, const char *base)
 {
 	int	sign;
-	int	i;
-	int	result;
 
-	result = 0;
 	sign = 1;
-	i = 0;
-	if (!str)
+	if (!nptr || !base || ft_strlen(base) < 2 || ft_strlen(base) > 16)
 		return (0);
-	while (str[i] && ft_isspace(str[i]))
-		i++;
-	if (str[i] == '-')
-		sign = -sign;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	if (base == 16 && str[i] == '0' && str[i + 1] == 'x')
-		i += 2;
-	if (base == 16 && is_hex(str + i) == false)
-		return (0);
-	result = ft_atoi_base_aux(str, i, base);
-	return (result * sign);
+	while (ft_isspace(*nptr))
+		nptr++;
+	if (*nptr == '-' || *nptr == '+')
+		if (*nptr++ == '-' && ft_strlen(base) == 10)
+			sign = -1;
+	if (*nptr == '0' && (*(nptr + 1) == 'x' || *(nptr + 1) == 'X'))
+		nptr += 2;
+	return (ft_atoi_base_aux(nptr, base, sign));
 }
 
-static int	ft_atoi_base_aux(const char *str, int i, int base)
+static int	is_in_base(char c, const char *base)
+{
+	int	i;
+
+	i = -1;
+	while (base[++i])
+		if (base[i] == c)
+			return (i);
+	return (-1);
+}
+
+int	ft_atoi_base_aux(const char *nptr, const char *base, int sign)
 {
 	int	result;
 
 	result = 0;
-	while ((str[i] >= '0' && str[i] <= '9')
-		|| (base == 16 && str[i] >= 'A' && str[i] <= 'F')
-		|| (base == 16 && str[i] >= 'a' && str[i] <= 'f'))
+	while (is_in_base(ft_tolower(*nptr), base) != -1)
 	{
-		if (str[i] >= 'A' && str[i] <= 'F')
-			result = result * base + (str[i] - 'A' + 10);
-		else if (str[i] >= 'a' && str[i] <= 'f')
-			result = result * base + (str[i] - 'a' + 10);
-		else
-			result = result * base + (str[i] - '0');
-		i++;
+		result *= ft_strlen(base) + is_in_base(ft_tolower(*nptr++), base);
 		if (result < 0)
 			return (0);
 	}
-	return (result);
-}
-
-static bool	is_hex(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if ((str[i] >= '0' && str[i] <= '9')
-			|| (str[i] >= 'A' && str[i] <= 'F')
-			|| (str[i] >= 'a' && str[i] <= 'f'))
-			i++;
-		else
-			return (false);
-	}
-	return (true);
-}
-
-static bool	ft_isspace(char c)
-{
-	if (c == 32 || (c >= 9 && c <= 13))
-		return (true);
-	return (false);
+	return (result * sign);
 }

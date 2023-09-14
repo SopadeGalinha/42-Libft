@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhogonca <jhogonca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhogonca <jhogonca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 21:16:15 by jhogonca          #+#    #+#             */
-/*   Updated: 2023/06/05 21:16:15 by jhogonca         ###   ########.fr       */
+/*   Created: 2023/09/14 01:02:37 by jhogonca          #+#    #+#             */
+/*   Updated: 2023/09/14 01:02:37 by jhogonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
 static void	ft_putchar(const char c, t_data *st)
 {
-	st->count += write(1, &c, 1);
+	st->count += write(st->fd, &c, 1);
 }
 
 static void	ft_putstr(const char *str, t_data *st)
@@ -72,15 +72,15 @@ static void	flag_conversions(char fmt, t_data *st, va_list args)
 	}
 }
 
-int	ft_printf(const char *fmt, ...)
+int	ft_printf_fd(int fd, const char *fmt, ...)
 {
 	t_data	st;
 	va_list	args;
 
-	st.count = 0;
-	st.index = -1;
+	st = (t_data){0};
 	va_start(args, fmt);
-	while (fmt[++st.index])
+	st.fd = fd;
+	while (fmt[st.index])
 	{
 		st.hex_ref = 16;
 		if (fmt[st.index] == '%')
@@ -88,10 +88,10 @@ int	ft_printf(const char *fmt, ...)
 			if (fmt[++st.index] == '%')
 				ft_putchar('%', &st);
 			else
-				flag_conversions(fmt[+st.index], &st, args);
+				flag_conversions(fmt[+st.index++], &st, args);
 		}
 		else
-			ft_putchar(fmt[st.index], &st);
+			ft_putchar(fmt[st.index++], &st);
 	}
 	va_end(args);
 	return (st.count);

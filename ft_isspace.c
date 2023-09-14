@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhogonca <jhogonca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhogonca <jhogonca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/07 18:40:55 by jhogonca          #+#    #+#             */
-/*   Updated: 2023/04/07 18:40:55 by jhogonca         ###   ########.fr       */
+/*   Created: 2023/09/14 00:00:01 by jhogonca          #+#    #+#             */
+/*   Updated: 2023/09/14 00:00:01 by jhogonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** DESCRIPTION:
-** 		Outputs the string ’s’ to the given file descriptor.
-*/
-
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int ft_isspace(char c)
 {
-	int	i;
-
-	i = -1;
-	if (!s)
-		return ft_putstr_fd("(null)", fd);
-	while (s[++i])
-			ft_putchar_fd(s[i], fd);
+	return (c == 32 || (c >= 9 && c <= 13));
 }

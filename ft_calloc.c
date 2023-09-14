@@ -28,9 +28,7 @@ void	*ft_calloc(size_t numb, size_t size)
 	full_size = size * numb;
 	dest = malloc(full_size);
 	if (dest == NULL)
-	{
 		return (NULL);
-	}
 	ft_bzero(dest, full_size);
 	return (dest);
 }

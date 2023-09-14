@@ -26,7 +26,5 @@ void	ft_bzero(void *s, size_t n)
 
 	new = (char *)s;
 	while (n-- > 0)
-	{
 		*new++ = '\0';
-	}
 }

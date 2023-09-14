@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_free_array.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhogonca <jhogonca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhogonca <jhogonca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/07 18:40:55 by jhogonca          #+#    #+#             */
-/*   Updated: 2023/04/07 18:40:55 by jhogonca         ###   ########.fr       */
+/*   Created: 2023/09/14 01:23:16 by jhogonca          #+#    #+#             */
+/*   Updated: 2023/09/14 01:23:16 by jhogonca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** DESCRIPTION:
-** 		Outputs the string ’s’ to the given file descriptor.
-*/
-
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void ft_free_array(char **split_ptr)
 {
-	int	i;
+	int i;
 
 	i = -1;
-	if (!s)
-		return ft_putstr_fd("(null)", fd);
-	while (s[++i])
-			ft_putchar_fd(s[i], fd);
+	while (split_ptr[++i])
+		free(split_ptr[i]);
+	free(split_ptr);
 }
